@@ -1,50 +1,44 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Javascript: edit selected LI</title>
-        <meta charset="windows-1252">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <button onclick="removeLI()">Remove</button>
-        <ul id="list">
-            <li>JS</li>
-            <li>PHP</li>
-            <li>Java</li>
-            <li>C#</li>
-            <li>C++</li>
-            <li>HTML</li>
-            <li>CSS</li>
-        </ul>
-        
-        <script>
-            
-            var items = document.querySelectorAll("#list li"),
-                tab = [], liIndex;
-        
-        // populate tab with li data
-        for(var i = 0; i < items.length; i++){
-            tab.push(items[i].innerHTML);
-        }
-        
-        // get li index using tab array on li click event
-        for(var i = 0; i < items.length; i++){
-            
-            items[i].onclick = function(){
-                
-                liIndex = tab.indexOf(this.innerHTML);
-                console.log(this.innerHTML + " INDEX = " + liIndex);
-            };
-            
-        }
-            
-            function removeLI(){
-               
-                items[liIndex].parentNode.removeChild(items[liIndex]);
+<html lang="en">
 
-            }
-            
-        </script>
-        
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initialscale=
+1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.
+css" integrity="sha384-
+BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>Remove the subjects</h1>
+    <h2>The Subjects are as follows:</h2>
+    <ul>
+        <li class="subjectName">JavaScript <button>Remove</button></li>
+        <br>
+        <li class="subjectName">MySQL <button>Remove</button></li>
+        <br>
+        <li class="subjectName">MongoDB <button>Remove</button></li>
+        <br>
+        <li class="subjectName">Java <button>Remove</button></li>
+    </ul>
+    <script>
+        var allSubjectName = document.querySelectorAll(".subjectName");
+        for (var index = 0; index < allSubjectName.length; index++) {
+            allSubjectName[index].addEventListener("click", function () {
+                this.classList.toggle("active");
+            });
+            allSubjectName[index].querySelector("button").addEventListener("click",
+                function () {
+                    this.closest(".subjectName").remove();
+                });
+        }
+    </script>
+</body>
+
 </html>

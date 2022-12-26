@@ -115,14 +115,3 @@ list.onclick = function(e) {
   };
 
   /**delete form  the play list */
-
-  list.onclick = function (event) {
-    var shapesArray = shapesCtrl.getShapesArray();
-    var target = event.target; // Getting which <li> was clicked
-    var id = target.parentNode.id; // Getting the value of the li that was clicked
-    canvasCtrl.deleteShape(shapesArray, id); // Deleting the targeted element from the array 
-
-    var li = shapeList.childNodes;
-
-    target.parentNode.parentNode.removeChild(target.parentNode);
-};
