@@ -45,7 +45,10 @@ function shuffle(){
 function pause(){   
     audio.pause();
 }
+
+
 function nextaudio(){
+    /**grap source of things */
     reff = audio.src
     ref = reff.split("/")
     indx = lst.indexOf(ref[ref.length-1]) + 1
@@ -86,6 +89,7 @@ audiofile = document.getElementById('al-add');
 
 var blob = window.URL || window.webkitURL;
 
+/**upload audio */
 audiofile.addEventListener('change', function(event){
 
     console.log('change on input#file triggered');
@@ -93,11 +97,10 @@ audiofile.addEventListener('change', function(event){
     fileURL = blob.createObjectURL(file);
    
     console.log('File BlobURL: '+ fileURL);
-    console.log('File BlobURL: '+ fileURL);
     audio.src = fileURL;
     audio.play()
-
 });
+
 /*play from lst */
 list.onclick = function(e) {
     audio = document.getElementById("audio-player");
@@ -110,3 +113,16 @@ list.onclick = function(e) {
     audio.load(); //call this to just preload the audio without playing
     audio.play(); 
   };
+
+  /**delete form  the play list */
+
+  list.onclick = function (event) {
+    var shapesArray = shapesCtrl.getShapesArray();
+    var target = event.target; // Getting which <li> was clicked
+    var id = target.parentNode.id; // Getting the value of the li that was clicked
+    canvasCtrl.deleteShape(shapesArray, id); // Deleting the targeted element from the array 
+
+    var li = shapeList.childNodes;
+
+    target.parentNode.parentNode.removeChild(target.parentNode);
+};

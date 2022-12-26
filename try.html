@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript: edit selected LI</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <button onclick="removeLI()">Remove</button>
+        <ul id="list">
+            <li>JS</li>
+            <li>PHP</li>
+            <li>Java</li>
+            <li>C#</li>
+            <li>C++</li>
+            <li>HTML</li>
+            <li>CSS</li>
+        </ul>
+        
+        <script>
+            
+            var items = document.querySelectorAll("#list li"),
+                tab = [], liIndex;
+        
+        // populate tab with li data
+        for(var i = 0; i < items.length; i++){
+            tab.push(items[i].innerHTML);
+        }
+        
+        // get li index using tab array on li click event
+        for(var i = 0; i < items.length; i++){
+            
+            items[i].onclick = function(){
+                
+                liIndex = tab.indexOf(this.innerHTML);
+                console.log(this.innerHTML + " INDEX = " + liIndex);
+            };
+            
+        }
+            
+            function removeLI(){
+               
+                items[liIndex].parentNode.removeChild(items[liIndex]);
+
+            }
+            
+        </script>
+        
+    </body>
+</html>
